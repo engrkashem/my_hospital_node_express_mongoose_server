@@ -1,7 +1,40 @@
+/* eslint-disable no-console */
+import { Server } from 'http';
 import app from './app';
+import config from './app/config';
+import mongoose from 'mongoose';
 
-const port = 3000;
+let server: Server;
 
-app.listen(port, () => {
-  console.log(`My Hospital app listening on port ${port}`);
+async function main() {
+  try {
+    await mongoose.connect(config.dbUrl as string);
+
+    server = app.listen(config.port, () => {
+      console.log(`My Hospital app listening on port ${config.port}`);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+main();
+
+process.on('unhandledRejection', () => {
+  console.log(
+    'unhandledRejection is detected. My Hospital server is shutting down....',
+  );
+  if (server) {
+    server.close(() => {
+      process.exit(1);
+    });
+  }
+  process.exit(1);
+});
+
+process.on('uncaughtException', () => {
+  console.log(
+    'uncaughtException is detected. My Hospital server is shutting down....',
+  );
+  process.exit(1);
 });
