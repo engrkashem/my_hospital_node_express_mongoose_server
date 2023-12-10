@@ -20,7 +20,7 @@ export type TDoctor = {
   address: TAddress;
   profileImage?: string;
   department?: Types.ObjectId;
-  salary: string;
+  salary: number;
   isDeleted: boolean;
 };
 

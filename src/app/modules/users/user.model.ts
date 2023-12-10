@@ -5,7 +5,11 @@ import { Role, Status } from './user.constants';
 const userSchema = new Schema<TUser>(
   {
     id: { type: String, required: [true, 'Id is required'], unique: true },
-    password: { type: String, required: [true, 'Password is required'] },
+    password: {
+      type: String,
+      required: [true, 'Password is required'],
+      trim: true,
+    },
     isPasswordChanged: { type: Boolean, default: false },
     role: { type: String, enum: Role, required: [true, 'Role is required'] },
     status: { type: String, enum: Status, default: 'active' },

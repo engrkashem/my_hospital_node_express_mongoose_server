@@ -31,7 +31,7 @@ const doctorSchema = new Schema<TDoctor>(
     address: { type: addressSchema, required: [true, 'Address is required'] },
     profileImage: { type: String },
     department: { type: Schema.Types.ObjectId },
-    salary: { type: String, required: [true, 'Salary is required'] },
+    salary: { type: Number, required: [true, 'Salary is required'] },
     isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true },
