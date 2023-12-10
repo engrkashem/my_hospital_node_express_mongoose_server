@@ -17,7 +17,7 @@ export type TBloodGroup =
   | 'O-';
 
 export type TAddress = {
-  road?: string;
+  street?: string;
   city?: string;
   district: string;
   division?: string;

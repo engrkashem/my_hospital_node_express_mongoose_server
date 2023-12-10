@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { TDoctor } from './doctor.interface';
-import { addressSchema, userNameSchema } from '../../schemas';
-import { BloodGroup, Gender } from '../constants';
+import { addressSchema, userNameSchema } from '../schemas/module.schemas';
+import { BloodGroup, Gender } from '../constants/module.constants';
 
 const doctorSchema = new Schema<TDoctor>(
   {
@@ -20,7 +20,11 @@ const doctorSchema = new Schema<TDoctor>(
       enum: Gender,
       required: [true, 'Designation is required.'],
     },
-    email: { type: String, required: [true, 'Email is required.'] },
+    email: {
+      type: String,
+      required: [true, 'Email is required.'],
+      unique: true,
+    },
     dateOfBirth: { type: Date, required: [true, 'Date of birth is required.'] },
     bloodGroup: { type: String, enum: BloodGroup },
     contactNo: { type: String, required: [true, 'Contact number is required'] },

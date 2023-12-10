@@ -1,5 +1,10 @@
 import { Model, Types } from 'mongoose';
-import { TAddress, TBloodGroup, TGender, TUserName } from '../interfaces';
+import {
+  TAddress,
+  TBloodGroup,
+  TGender,
+  TUserName,
+} from '../interfaces/modules.interfaces';
 
 export type TDoctor = {
   id: string;

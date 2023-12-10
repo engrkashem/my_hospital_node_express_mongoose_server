@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
-import { TAddress, TUserName } from '../modules/interfaces';
+import { TAddress, TUserName } from '../interfaces/modules.interfaces';
 
 export const addressSchema = new Schema<TAddress>({
-  road: { type: String },
+  street: { type: String },
   city: { type: String },
   district: { type: String, required: [true, 'District is required'] },
   division: { type: String },
